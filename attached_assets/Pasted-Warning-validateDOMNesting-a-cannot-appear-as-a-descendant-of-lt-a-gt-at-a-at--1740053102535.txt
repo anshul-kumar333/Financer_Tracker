@@ -1,0 +1,29 @@
+Warning: validateDOMNesting(...): <a> cannot appear as a descendant of &lt;a&gt;.
+    at a
+    at a
+    at https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=c2431374:337:18
+    at div
+    at div
+    at nav
+    at div
+    at Layout (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/src/components/layout.tsx:20:34)
+    at QueryClientProvider (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=c2431374:2805:3)
+    at App
+at a
+at a
+at https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=c2431374:337:18
+at div
+at div
+at nav
+at div
+at Layout (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/src/components/layout.tsx:20:34)
+at QueryClientProvider (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=c2431374:2805:3)
+at App
+at t.value (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://778b7a3b-442f-49c7-9a41-32794a570240-00-31wcrcrwozd27.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Creating transaction: 
+Object {amount: 1000, type: "give", category: "food", description: "Mujhe 1000 Carino se lene hai Qki? Mene KFC me use Burger Khilaya tha! Jis din uske Kurte par Cold…", paymentMethod: "upi", …}
+Error creating transaction: 
+SyntaxError {}

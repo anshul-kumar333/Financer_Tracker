@@ -1,0 +1,130 @@
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+localhost/:1 Error while trying to use the following icon from the Manifest: http://localhost:5000/icon-192.png (Download error or resource isn't a valid image)Understand this errorAI
+chunk-RPCDYKBN.js?v=57d3b8e9:521 Warning: Received NaN for the `value` attribute. If this is expected, cast the value to a string.
+    at input
+    at _c (http://localhost:5000/src/components/ui/input.tsx:20:11)
+    at http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/chunk-UACHJROW.js?v=57d3b8e9:52:11
+    at http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/chunk-UACHJROW.js?v=57d3b8e9:33:11
+    at http://localhost:5000/src/components/ui/form.tsx:127:9
+    at div
+    at http://localhost:5000/src/components/ui/form.tsx:71:6
+    at Controller (http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/chunk-YABUFNLM.js?v=57d3b8e9:313:35)
+    at FormField (http://localhost:5000/src/components/ui/form.tsx:32:6)
+    at form
+    at FormProvider (http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/chunk-YABUFNLM.js?v=57d3b8e9:102:11)
+    at div
+    at AddTransaction (http://localhost:5000/src/pages/add-transaction.tsx:52:28)
+    at Route (http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/wouter.js?v=57d3b8e9:323:16)
+    at Switch (http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/wouter.js?v=57d3b8e9:379:17)
+    at Router
+    at div
+    at div
+    at Layout (http://localhost:5000/src/components/layout.tsx:20:34)
+    at QueryClientProvider (http://localhost:5000/@fs/C:/Users/anshu/Downloads/FinanceTracker/node_modules/.vite/deps/@tanstack_react-query.js?v=57d3b8e9:2805:3)
+    at App
+printWarning @ chunk-RPCDYKBN.js?v=57d3b8e9:521
+error @ chunk-RPCDYKBN.js?v=57d3b8e9:505
+validateProperty$1 @ chunk-RPCDYKBN.js?v=57d3b8e9:3413
+warnUnknownProperties @ chunk-RPCDYKBN.js?v=57d3b8e9:3459
+validateProperties$2 @ chunk-RPCDYKBN.js?v=57d3b8e9:3478
+validatePropertiesInDevelopment @ chunk-RPCDYKBN.js?v=57d3b8e9:7346
+diffProperties @ chunk-RPCDYKBN.js?v=57d3b8e9:7620
+prepareUpdate @ chunk-RPCDYKBN.js?v=57d3b8e9:8367
+updateHostComponent$1 @ chunk-RPCDYKBN.js?v=57d3b8e9:16047
+completeWork @ chunk-RPCDYKBN.js?v=57d3b8e9:16271
+completeUnitOfWork @ chunk-RPCDYKBN.js?v=57d3b8e9:19224
+performUnitOfWork @ chunk-RPCDYKBN.js?v=57d3b8e9:19206
+workLoopSync @ chunk-RPCDYKBN.js?v=57d3b8e9:19137
+renderRootSync @ chunk-RPCDYKBN.js?v=57d3b8e9:19116
+performSyncWorkOnRoot @ chunk-RPCDYKBN.js?v=57d3b8e9:18874
+flushSyncCallbacks @ chunk-RPCDYKBN.js?v=57d3b8e9:9119
+flushSync @ chunk-RPCDYKBN.js?v=57d3b8e9:18959
+finishEventHandler @ chunk-RPCDYKBN.js?v=57d3b8e9:3569
+batchedUpdates @ chunk-RPCDYKBN.js?v=57d3b8e9:3582
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=57d3b8e9:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=57d3b8e9:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5449Understand this errorAI
+chunk-RPCDYKBN.js?v=57d3b8e9:1861 The specified value "NaN" cannot be parsed, or is out of range.
+set @ chunk-RPCDYKBN.js?v=57d3b8e9:1861
+updateWrapper @ chunk-RPCDYKBN.js?v=57d3b8e9:1984
+updateProperties @ chunk-RPCDYKBN.js?v=57d3b8e9:7762
+commitUpdate @ chunk-RPCDYKBN.js?v=57d3b8e9:8419
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17763
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17737
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17896
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17896
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17737
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17896
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17737
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17896
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17737
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17737
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17896
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17699
+recursivelyTraverseMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17685
+commitMutationEffectsOnFiber @ chunk-RPCDYKBN.js?v=57d3b8e9:17794
+commitMutationEffects @ chunk-RPCDYKBN.js?v=57d3b8e9:17663
+commitRootImpl @ chunk-RPCDYKBN.js?v=57d3b8e9:19347
+commitRoot @ chunk-RPCDYKBN.js?v=57d3b8e9:19277
+performSyncWorkOnRoot @ chunk-RPCDYKBN.js?v=57d3b8e9:18895
+flushSyncCallbacks @ chunk-RPCDYKBN.js?v=57d3b8e9:9119
+flushSync @ chunk-RPCDYKBN.js?v=57d3b8e9:18959
+finishEventHandler @ chunk-RPCDYKBN.js?v=57d3b8e9:3569
+batchedUpdates @ chunk-RPCDYKBN.js?v=57d3b8e9:3582
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=57d3b8e9:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=57d3b8e9:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5449Understand this warningAI
+chunk-RPCDYKBN.js?v=57d3b8e9:1861 The specified value "NaN" cannot be parsed, or is out of range.
+set @ chunk-RPCDYKBN.js?v=57d3b8e9:1861
+updateWrapper @ chunk-RPCDYKBN.js?v=57d3b8e9:1984
+restoreControlledState @ chunk-RPCDYKBN.js?v=57d3b8e9:2040
+restoreControlledState$3 @ chunk-RPCDYKBN.js?v=57d3b8e9:8018
+restoreStateOfTarget @ chunk-RPCDYKBN.js?v=57d3b8e9:3525
+restoreStateIfNeeded @ chunk-RPCDYKBN.js?v=57d3b8e9:3553
+finishEventHandler @ chunk-RPCDYKBN.js?v=57d3b8e9:3570
+batchedUpdates @ chunk-RPCDYKBN.js?v=57d3b8e9:3582
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=57d3b8e9:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=57d3b8e9:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=57d3b8e9:5449Understand this warningAI
