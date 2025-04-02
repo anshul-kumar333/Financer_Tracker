@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Financial Mascot Styles */
+.mascot-container {
+  position: relative;
+}
+
+.mascot-svg {
+  display: block;
+}
+
+.mascot-head {
+  fill: #1A73E8;
+  stroke: #1557b0;
+  stroke-width: 2;
+}
+
+.mascot-eye {
+  fill: white;
+  stroke: #333;
+  stroke-width: 1;
+}
+
+.mascot-eyebrow {
+  fill: none;
+  stroke: #333;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.mascot-mouth {
+  fill: none;
+  stroke: #333;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.mascot-mouth-circle {
+  fill: #333;
+}
+
+.mascot-rupee {
+  fill: #1A73E8;
+  font-weight: bold;
+  dominant-baseline: middle;
+}
+
+.mascot-shield {
+  fill: #34A853;
+  stroke: #1A73E8;
+  stroke-width: 1;
+}
+
+.mascot-chart-line {
+  fill: none;
+  stroke: #1A73E8;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.mascot-chart-dot {
+  fill: #34A853;
+  stroke: #1A73E8;
+  stroke-width: 1;
+}
+
+.mascot-bell-body {
+  fill: none;
+  stroke: #EA4335;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.mascot-bell-clapper {
+  fill: #EA4335;
+}
+
+.mascot-container.happy .mascot-head {
+  fill: #1A73E8;
+}
+
+.mascot-container.excited .mascot-head {
+  fill: #34A853;
+}
+
+.mascot-container.alert .mascot-head {
+  fill: #EA4335;
+}
+
+.mascot-container.thoughtful .mascot-head {
+  fill: #FBBC05;
+}
+
+.mascot-container.secure .mascot-head {
+  fill: #4285F4;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
