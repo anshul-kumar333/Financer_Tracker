@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Sound Generator</title>
+  <style>
+    body {
+      font-family: 'Google Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      color: #1A73E8;
+      margin-top: 0;
+    }
+    
+    .controls {
+      margin: 20px 0;
+    }
+    
+    .button {
+      background-color: #1A73E8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #0d62d1;
+    }
+    
+    .button:active {
+      background-color: #0b57b7;
+    }
+    
+    .waveform {
+      border: 1px solid #ddd;
+      height: 150px;
+      width: 100%;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .parameters {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .parameter-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    input[type="range"] {
+      width: 100%;
+    }
+    
+    .value-display {
+      font-size: 14px;
+      color: #666;
+      text-align: right;
+    }
+    
+    .download-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .download-link {
+      display: inline-block;
+      background-color: #34A853;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    
+    .download-link:hover {
+      background-color: #2d9249;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>नोटिफिकेशन साउंड जनरेटर</h1>
+    <p>पैसा ट्रैकर ऐप के लिए नोटिफिकेशन साउंड बनाएं। साउंड बनाने के बाद, इसे डाउनलोड करें और <code>/sounds/notification.mp3</code> के रूप में सेव करें।</p>
+    
+    <div class="waveform" id="waveform">
+      <!-- Waveform will be drawn here -->
+    </div>
+    
+    <div class="parameters">
+      <div class="parameter-group">
+        <label for="frequency">फ्रीक्वेंसी (Hz)</label>
+        <input type="range" id="frequency" min="200" max="2000" value="800" step="10">
+        <div class="value-display"><span id="frequency-value">800</span> Hz</div>
+      </div>
+      
+      <div class="parameter-group">
+        <label for="duration">अवधि (सेकंड)</label>
+        <input type="range" id="duration" min="0.1" max="3" value="1.5" step="0.1">
+        <div class="value-display"><span id="duration-value">1.5</span>s</div>
+      </div>
+      
+      <div class="parameter-group">
+        <label for="attack">अटैक (ms)</label>
+        <input type="range" id="attack" min="0" max="500" value="10" step="10">
+        <div class="value-display"><span id="attack-value">10</span>ms</div>
+      </div>
+      
+      <div class="parameter-group">
+        <label for="decay">डीके (ms)</label>
+        <input type="range" id="decay" min="0" max="2000" value="500" step="10">
+        <div class="value-display"><span id="decay-value">500</span>ms</div>
+      </div>
+      
+      <div class="parameter-group">
+        <label for="volume">वॉल्यूम</label>
+        <input type="range" id="volume" min="0" max="1" value="0.5" step="0.01">
+        <div class="value-display"><span id="volume-value">50</span>%</div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="play-button" class="button">साउंड प्ले करें</button>
+      <button id="stop-button" class="button" style="margin-left: 10px; background-color: #EA4335;">स्टॉप</button>
+    </div>
+    
+    <div class="download-section">
+      <p>अपनी साउंड से संतुष्ट हैं? डाउनलोड करें और इसे <code>/sounds/notification.mp3</code> में जोड़ें।</p>
+      <a id="download-link" class="download-link" href="#" download="notification.mp3">MP3 डाउनलोड करें</a>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Audio context and nodes
+      let audioContext = null;
+      let oscillator = null;
+      let gainNode = null;
+      
+      // DOM elements
+      const playButton = document.getElementById('play-button');
+      const stopButton = document.getElementById('stop-button');
+      const downloadLink = document.getElementById('download-link');
+      const waveformCanvas = document.createElement('canvas');
+      
+      // Parameters
+      const frequencySlider = document.getElementById('frequency');
+      const durationSlider = document.getElementById('duration');
+      const attackSlider = document.getElementById('attack');
+      const decaySlider = document.getElementById('decay');
+      const volumeSlider = document.getElementById('volume');
+      
+      // Value displays
+      const frequencyValue = document.getElementById('frequency-value');
+      const durationValue = document.getElementById('duration-value');
+      const attackValue = document.getElementById('attack-value');
+      const decayValue = document.getElementById('decay-value');
+      const volumeValue = document.getElementById('volume-value');
+      
+      // Setup waveform display
+      const waveformContainer = document.getElementById('waveform');
+      waveformCanvas.width = waveformContainer.clientWidth;
+      waveformCanvas.height = waveformContainer.clientHeight;
+      waveformContainer.appendChild(waveformCanvas);
+      
+      // Update parameter displays
+      function updateDisplays() {
+        frequencyValue.textContent = frequencySlider.value;
+        durationValue.textContent = durationSlider.value;
+        attackValue.textContent = attackSlider.value;
+        decayValue.textContent = decaySlider.value;
+        volumeValue.textContent = Math.round(volumeSlider.value * 100);
+        
+        drawWaveform();
+      }
+      
+      // Draw waveform visualization
+      function drawWaveform() {
+        const ctx = waveformCanvas.getContext('2d');
+        const width = waveformCanvas.width;
+        const height = waveformCanvas.height;
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw background
+        ctx.fillStyle = '#f8f9fa';
+        ctx.fillRect(0, 0, width, height);
+        
+        // Draw axes
+        ctx.strokeStyle = '#ddd';
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+        ctx.lineTo(width, height / 2);
+        ctx.stroke();
+        
+        // Get parameters
+        const frequency = parseFloat(frequencySlider.value);
+        const duration = parseFloat(durationSlider.value);
+        const attack = parseFloat(attackSlider.value) / 1000; // convert to seconds
+        const decay = parseFloat(decaySlider.value) / 1000; // convert to seconds
+        const volume = parseFloat(volumeSlider.value);
+        
+        // Draw waveform
+        ctx.strokeStyle = '#1A73E8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        
+        const samplesPerSecond = 100;
+        const totalSamples = Math.floor(duration * samplesPerSecond);
+        
+        for (let i = 0; i < totalSamples; i++) {
+          const t = i / samplesPerSecond;
+          const x = (t / duration) * width;
+          
+          // Apply envelope
+          let envelope = 1;
+          if (t < attack) {
+            envelope = t / attack;
+          } else if (t > duration - decay) {
+            envelope = (duration - t) / decay;
+          }
+          
+          // Generate sin wave
+          const y = Math.sin(2 * Math.PI * frequency * t) * envelope * volume;
+          
+          // Map to canvas
+          const canvasY = height / 2 - (y * height / 2);
+          
+          if (i === 0) {
+            ctx.moveTo(x, canvasY);
+          } else {
+            ctx.lineTo(x, canvasY);
+          }
+        }
+        
+        ctx.stroke();
+      }
+      
+      // Initialize audio context on first user interaction
+      function initAudio() {
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      }
+      
+      // Play the sound
+      function playSound() {
+        initAudio();
+        
+        // Stop any playing sound
+        if (oscillator) {
+          stopSound();
+        }
+        
+        // Get parameters
+        const frequency = parseFloat(frequencySlider.value);
+        const duration = parseFloat(durationSlider.value);
+        const attack = parseFloat(attackSlider.value) / 1000; // convert to seconds
+        const decay = parseFloat(decaySlider.value) / 1000; // convert to seconds
+        const volume = parseFloat(volumeSlider.value);
+        
+        // Create nodes
+        oscillator = audioContext.createOscillator();
+        gainNode = audioContext.createGain();
+        
+        // Set properties
+        oscillator.type = 'sine';
+        oscillator.frequency.value = frequency;
+        
+        // Set initial gain to 0
+        gainNode.gain.value = 0;
+        
+        // Connect nodes
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Start oscillator
+        oscillator.start();
+        
+        // Apply envelope
+        const now = audioContext.currentTime;
+        gainNode.gain.linearRampToValueAtTime(volume, now + attack);
+        gainNode.gain.linearRampToValueAtTime(0, now + duration);
+        
+        // Stop after duration
+        oscillator.stop(now + duration);
+        
+        // Clean up after stopping
+        oscillator.onended = () => {
+          oscillator = null;
+          gainNode = null;
+        };
+      }
+      
+      // Stop the sound
+      function stopSound() {
+        if (oscillator) {
+          oscillator.stop();
+          oscillator = null;
+          gainNode = null;
+        }
+      }
+      
+      // Generate and download audio file
+      function generateAudioFile() {
+        initAudio();
+        
+        // Get parameters
+        const frequency = parseFloat(frequencySlider.value);
+        const duration = parseFloat(durationSlider.value);
+        const attack = parseFloat(attackSlider.value) / 1000; // convert to seconds
+        const decay = parseFloat(decaySlider.value) / 1000; // convert to seconds
+        const volume = parseFloat(volumeSlider.value);
+        
+        // Create an offline audio context for rendering
+        const offlineCtx = new OfflineAudioContext(1, audioContext.sampleRate * duration, audioContext.sampleRate);
+        
+        // Create oscillator and gain nodes
+        const offlineOsc = offlineCtx.createOscillator();
+        const offlineGain = offlineCtx.createGain();
+        
+        // Set properties
+        offlineOsc.type = 'sine';
+        offlineOsc.frequency.value = frequency;
+        offlineGain.gain.value = 0;
+        
+        // Connect nodes
+        offlineOsc.connect(offlineGain);
+        offlineGain.connect(offlineCtx.destination);
+        
+        // Apply envelope
+        const startTime = 0;
+        offlineGain.gain.linearRampToValueAtTime(volume, startTime + attack);
+        offlineGain.gain.linearRampToValueAtTime(0, startTime + duration - decay);
+        
+        // Start and stop oscillator
+        offlineOsc.start(startTime);
+        offlineOsc.stop(startTime + duration);
+        
+        // Render audio
+        offlineCtx.startRendering().then(renderedBuffer => {
+          // Convert buffer to WAV
+          const wavBlob = bufferToWave(renderedBuffer, offlineCtx.length);
+          
+          // Create a URL for the WAV blob
+          const url = URL.createObjectURL(wavBlob);
+          
+          // Update download link
+          downloadLink.href = url;
+          
+          // Automatically start download
+          // downloadLink.click();
+        }).catch(err => {
+          console.error('Rendering failed:', err);
+        });
+      }
+      
+      // Convert AudioBuffer to WAV Blob
+      function bufferToWave(buffer, len) {
+        const numOfChan = buffer.numberOfChannels;
+        const length = len * numOfChan * 2 + 44;
+        const mergedBuffer = new Int16Array(length);
+        
+        // Initialize WAV file header
+        let view = new DataView(mergedBuffer.buffer);
+        
+        // RIFF chunk descriptor
+        writeString(view, 0, 'RIFF');
+        view.setUint32(4, length - 8, true);
+        writeString(view, 8, 'WAVE');
+        
+        // fmt sub-chunk
+        writeString(view, 12, 'fmt ');
+        view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true); // PCM format
+        view.setUint16(22, numOfChan, true);
+        view.setUint32(24, buffer.sampleRate, true);
+        view.setUint32(28, buffer.sampleRate * 2 * numOfChan, true);
+        view.setUint16(32, numOfChan * 2, true);
+        view.setUint16(34, 16, true);
+        
+        // data sub-chunk
+        writeString(view, 36, 'data');
+        view.setUint32(40, length - 44, true);
+        
+        // Write audio data
+        const offset = 44;
+        const channelData = buffer.getChannelData(0);
+        for (let i = 0; i < channelData.length; i++) {
+          // Convert float to 16-bit PCM
+          const s = Math.max(-1, Math.min(1, channelData[i]));
+          view.setInt16(offset + i * 2, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        }
+        
+        return new Blob([view.buffer], { type: 'audio/wav' });
+      }
+      
+      // Write a string to a DataView
+      function writeString(view, offset, string) {
+        for (let i = 0; i < string.length; i++) {
+          view.setUint8(offset + i, string.charCodeAt(i));
+        }
+      }
+      
+      // Event listeners
+      playButton.addEventListener('click', playSound);
+      stopButton.addEventListener('click', stopSound);
+      downloadLink.addEventListener('click', generateAudioFile);
+      
+      frequencySlider.addEventListener('input', updateDisplays);
+      durationSlider.addEventListener('input', updateDisplays);
+      attackSlider.addEventListener('input', updateDisplays);
+      decaySlider.addEventListener('input', updateDisplays);
+      volumeSlider.addEventListener('input', updateDisplays);
+      
+      // Initialize displays
+      updateDisplays();
+      
+      // Generate audio file on page load
+      downloadLink.addEventListener('click', generateAudioFile);
+    });
+  </script>
+</body>
+</html>
